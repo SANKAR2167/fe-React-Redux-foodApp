@@ -128,7 +128,7 @@ const ProductCard = ({ name, id, price, handler, imgSrc, desc, ret }) => {
     color: ret >= 4 ? 'green' : 'red',
   };
 
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   return (
     <Card className="food-container">
       <img src={imgSrc} alt={name} className="food-image" />

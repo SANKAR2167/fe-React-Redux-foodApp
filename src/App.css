@@ -45,7 +45,7 @@ body{
   
   .food-home {
     width: 100%;
-    height: 91.2vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -186,6 +186,9 @@ body{
       height: 250px;
     }
   
+    .total-cart{
+      width: 100%;
+    }
     .food-detail{
       flex-direction: column;
       padding: 10px;
