@@ -2,6 +2,7 @@ import { Button, Card } from "@mui/material";
 import React from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { cartItems, subTotal, tax, shipping, total } = useSelector(
@@ -32,6 +33,8 @@ const Cart = () => {
     dispatch({ type: "calculatePrice" });
   };
 
+  const navigate = useNavigate();
+
   return (
     <div className="food-cart">
       <main className="product-list">
@@ -58,6 +61,7 @@ const Cart = () => {
         <h2>Shipping: ₹{shipping}</h2>
         <h2>Tax: ₹{tax}</h2>
         <h2>Total: ₹{total}</h2>
+        <Button variant="contained" onClick={() => navigate(`/cart/checkout`)}> Place Order</Button>
       </aside>
     </div>
   );
