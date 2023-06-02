@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import CheckOut from "./components/CheckOut";
 import OrderSuccess from "./components/OrderSuccess";
+import { Loading } from "./Loading";
 
 function App() {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ function App() {
         <Route path="/cart/checkout" element={<ProductedRoute><CheckOut /></ProductedRoute>} />
         <Route path="/cart/checkout/ordersuccess" element={<ProductedRoute><OrderSuccess /></ProductedRoute>} />
         <Route path="/" element={<ProductedRoute><Home /></ProductedRoute>} />
+        <Route path="/cart/checkout/loading" element={<ProductedRoute><Loading /></ProductedRoute>} />
       </Routes>
       <Toaster />
     </div>
@@ -61,4 +63,5 @@ function Home() {
     </div>
   )
 }
+
 export default App;

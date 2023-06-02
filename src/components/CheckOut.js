@@ -1,7 +1,11 @@
 import { Button, Card, TextField } from '@mui/material'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function CheckOut() {
+
+    const navigate = useNavigate();
+
     return (
         <div className='checkout'>
             <Card className='checkout-cart'>
@@ -46,7 +50,7 @@ export default function CheckOut() {
                     </div>
                 </div>
                 <br />
-                <Button variant='contained' className='checkout-field'>Place Order</Button>
+                <Button variant='contained' className='checkout-field' onClick={() => navigate("/cart/checkout/loading")}>Place Order</Button>
             </Card>
         </div>
     )
