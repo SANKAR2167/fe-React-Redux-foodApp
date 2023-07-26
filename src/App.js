@@ -11,11 +11,27 @@ import SignUp from "./components/SignUp";
 import CheckOut from "./components/CheckOut";
 import OrderSuccess from "./components/OrderSuccess";
 import { Loading } from "./Loading";
+import { useEffect, useState } from "react";
 
 function App() {
   const navigate = useNavigate();
 
   const { cartItems } = useSelector((state) => state.cart);
+
+  const [hide, setHide] = useState(true)
+
+  useEffect(()=>{
+    const token = localStorage.getItem("token");
+    setHide(token);
+  },[])
+
+
+  const Logout = ()=> {
+    localStorage.clear();
+    window.location.reload();
+    setHide(false)
+  }
+
 
   return (
     <div className="App">
@@ -23,7 +39,7 @@ function App() {
         <Toolbar>
           <Button color='inherit' onClick={() => navigate(`/`)}>Home</Button>
           <Button color='inherit' onClick={() => navigate(`/foods`)}>Foods</Button>
-          <Button className='menu' color='inherit' onClick={Logout}>Logout</Button>
+          {hide ? (<Button className='menu' color='inherit' onClick={Logout}>Logout</Button>) : null}
           <Button color='inherit' sx={{ marginLeft: 'auto' }} onClick={() => navigate(`/cart`)}><Badge color="primary" badgeContent={cartItems.length}>
             <ShoppingCartIcon />
           </Badge></Button>
@@ -53,10 +69,6 @@ function ProductedRoute({ children }) {
   return isAuth ? children : <Navigate replace to={"/fd_users/login"} />;
 }
 
-function Logout() {
-  localStorage.clear();
-  window.location.reload();
-}
 
 function Home() {
 

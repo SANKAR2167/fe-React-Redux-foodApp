@@ -31,8 +31,9 @@ export default function(){
             } else {
                 const result = await data.json();
                 toast.success("Login Success");
-                localStorage.setItem("token",result.token)
-                navigate("/")
+                localStorage.setItem("token",result.token);
+                navigate("/");
+                window.location.reload();
             }
 
         }
